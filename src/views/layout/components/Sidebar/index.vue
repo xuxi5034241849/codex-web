@@ -1,7 +1,7 @@
 <template>
   <el-scrollbar wrapClass="scrollbar-wrapper">
     <div class="text logo">
-      通用构建器
+      Codex
     </div>
     <el-menu
       mode="vertical"

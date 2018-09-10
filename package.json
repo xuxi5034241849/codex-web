@@ -1,9 +1,9 @@
 {
-  "name": "vue-admin-template",
+  "name": "Codex",
   "version": "3.6.0",
   "license": "MIT",
-  "description": "A vue admin template with Element UI & axios & iconfont & permission control & lint",
-  "author": "Pan <panfree23@gmail.com>",
+  "description": "一款解决团队开发效率的工具",
+  "author": "xuxi",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",

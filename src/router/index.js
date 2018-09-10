@@ -45,9 +45,9 @@ export const constantRouterMap = [
     children: [
       {
         path: 'index',
-        name: '代码生成',
+        name: 'CRUD',
         component: () => import('@/views/main/index'),
-        meta: { title: '代码生成', icon: 'table' }
+        meta: { title: 'CRUD', icon: 'table' }
       },
       {
         path: 'framework',
