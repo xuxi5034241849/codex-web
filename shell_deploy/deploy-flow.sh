@@ -17,6 +17,7 @@ deploy_host_port=22
 
 
 upload_path="$WORKSPACE/dist/dist.tar.gz"
+deploy_path=$deploy_dir/$deploy_name
 
 
 upgrade_app() {
@@ -64,20 +65,20 @@ startup_host_app () {
     deploy_ssh_host="$1"
 
     # 创建目录
-    ssh $deploy_ssh_host "mkdir -p $deploy_dir"
+    ssh $deploy_ssh_host "mkdir -p $deploy_path"
 
     # 删除当前工程
-    ssh $deploy_ssh_host "rm -rf $deploy_dir/$deploy_name"
+    ssh $deploy_ssh_host "rm -rf $deploy_path"
 
     echo "正在上传工程......"
 
     # 上传新的工程
-    scp $upload_path $deploy_ssh_host:$deploy_dir/$deploy_name
+    scp $upload_path $deploy_ssh_host:$deploy_path
 
-    echo "开始启动新版本的app......"
+    echo "解压工程......"
 
     # 解压工程
-    ssh $deploy_ssh_host "cd $deploy_dir && tar -zxvf dist.tar.gz"
+    ssh $deploy_ssh_host "cd $deploy_path && tar -zxvf dist.tar.gz"
 
 }
 
