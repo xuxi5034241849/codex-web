@@ -63,7 +63,7 @@ startup_host_app () {
     deploy_ssh_host="$1"
 
     # 删除当前工程
-    ssh $deploy_ssh_host "cd $deploy_dir && rm -rf *
+    ssh $deploy_ssh_host "cd $deploy_dir && rm -rf *"
 
     echo "正在上传工程......"
 
@@ -72,7 +72,7 @@ startup_host_app () {
 
     echo "开始启动新版本的app......"
 
-    # 启动工程
+    # 解压工程
     ssh $deploy_ssh_host "cd $deploy_dir && tar -zxvf dist.tar.gz"
 
 }
