@@ -1,7 +1,7 @@
 #! /bin/sh
 
 # 调用方式
-# ./deploy.sh <host> <dir>
+# ./deploy.sh <host> <dir> name
 
 cd $WORKSPACE
 source ~/.bash_profile
@@ -12,6 +12,7 @@ npm -v
 
 deploy_ssh_hosts=$1
 deploy_dir=$2
+deploy_name=$3
 deploy_host_port=22
 
 
@@ -66,7 +67,7 @@ startup_host_app () {
     ssh $deploy_ssh_host "mkdir -p $deploy_dir"
 
     # 删除当前工程
-    ssh $deploy_ssh_host "cd $deploy_dir && rm -rf *"
+    ssh $deploy_ssh_host "rm -rf $deploy_dir/$deploy_name"
 
     echo "正在上传工程......"
 
