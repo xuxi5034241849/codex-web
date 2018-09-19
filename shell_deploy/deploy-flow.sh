@@ -73,7 +73,7 @@ startup_host_app () {
     echo "正在上传工程......"
 
     # 上传新的工程
-    scp $upload_path $deploy_ssh_host:$deploy_path
+    scp $upload_path $deploy_ssh_host:$deploy_path/
 
     echo "解压工程......"
 
