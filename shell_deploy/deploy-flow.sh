@@ -39,7 +39,7 @@ upgrade_app() {
 
 build_app() {
     npm install --registry=https://registry.npm.taobao.org
-    npm run build
+    npm run build:prod
 
     cd dist
     tar -zcvf dist.tar.gz *
