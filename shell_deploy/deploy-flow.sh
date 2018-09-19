@@ -72,7 +72,7 @@ startup_host_app () {
     echo "正在上传工程......"
 
     # 上传新的工程
-    scp $upload_path $deploy_ssh_host:$deploy_dir/
+    scp $upload_path $deploy_ssh_host:$deploy_dir/$deploy_name
 
     echo "开始启动新版本的app......"
 
