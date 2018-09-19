@@ -42,19 +42,19 @@
       <!--注册账户dialog-->
       <el-dialog title="创建新的账户" width="600px" :visible.sync="registerVisible">
         <el-form label-width="80px" :model="user" ref="user" :rules="rules">
-          <el-form-item label="用户名" prop="userName">
+          <el-form-item label="用户名:" prop="userName">
             <el-input placeholder="请输入用户名" v-model="user.userName"></el-input>
           </el-form-item>
-          <el-form-item label="密码" prop="password">
+          <el-form-item label="密码:" prop="password">
             <el-input type="password" placeholder="请输入密码" v-model="user.password"></el-input>
           </el-form-item>
-          <el-form-item label="姓名" prop="name">
+          <el-form-item label="姓名:" prop="name">
             <el-input placeholder="请输入姓名" v-model="user.name"></el-input>
           </el-form-item>
-          <el-form-item label="邮箱" prop="email">
+          <el-form-item label="邮箱:" prop="email">
             <el-input  placeholder="请输入邮箱" v-model="user.email"></el-input>
           </el-form-item>
-          <el-form-item label="手机" prop="telephone">
+          <el-form-item label="手机:" prop="telephone">
             <el-input  placeholder="请输入手机" v-model="user.telephone"></el-input>
           </el-form-item>
         </el-form>
@@ -70,7 +70,7 @@
 
 <script>
 import { isvalidUsername } from '@/utils/validate'
-import { register, validUser } from '@/api/login'
+import { register, validUser } from '@/api/user'
 
 export default {
   name: 'login',

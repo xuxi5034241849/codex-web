@@ -11,7 +11,7 @@
             <i class="el-icon-caret-bottom"></i>
           </div>
           <el-dropdown-menu class="user-dropdown" slot="dropdown">
-            <router-link class="inlineBlock" to="/">
+            <router-link class="inlineBlock" to="/setting">
               <el-dropdown-item>
                 个人中心
               </el-dropdown-item>
@@ -32,10 +32,10 @@
       <!--修改密码dialog-->
       <el-dialog title="修改密码" width="400px" :visible.sync="modifyPasswdVisible">
         <el-form label-width="80px" :model="info" ref="info" :rules="rules">
-          <el-form-item label="原密码" prop="oldPasswd">
+          <el-form-item label="原密码:" prop="oldPasswd">
             <el-input type="password" placeholder="请输入原密码" v-model="info.oldPasswd"></el-input>
           </el-form-item>
-          <el-form-item label="密码" prop="passwd">
+          <el-form-item label="密码:" prop="passwd">
             <el-input type="password" placeholder="请输入新密码" v-model="info.passwd"></el-input>
           </el-form-item>
         </el-form>
@@ -53,7 +53,7 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
-import { modifyPasswd } from '@/api/login'
+import { modifyPasswd } from '@/api/user'
 
 export default {
   data() {
@@ -83,11 +83,9 @@ export default {
   computed: {
     ...mapGetters([
       'sidebar',
-      'avatar'
-    ]),
-    name: function() {
-      return this.$store.getters.name
-    }
+      'avatar',
+      'name'
+    ])
   },
   methods: {
     toggleSideBar() {

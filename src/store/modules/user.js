@@ -1,4 +1,5 @@
-import { login, logout, getInfo } from '@/api/login'
+import { login, logout } from '@/api/login'
+import { getInfo, modifyUserInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const user = {
@@ -53,6 +54,21 @@ const user = {
           // } else {
           //   reject('getInfo: roles must be a non-null array !')
           // }
+          commit('SET_NAME', data.name)
+          commit('SET_USER_ID', data.userId)
+          // commit('SET_AVATAR', data.avatar)
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    // 更新用户信息
+    RefreshUserInfo({ commit, state }, user) {
+      return new Promise((resolve, reject) => {
+        modifyUserInfo(user).then(response => {
+          console.log(response)
+          const data = response.data
           commit('SET_NAME', data.name)
           commit('SET_USER_ID', data.userId)
           // commit('SET_AVATAR', data.avatar)
