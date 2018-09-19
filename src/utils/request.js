@@ -9,6 +9,16 @@ const service = axios.create({
   timeout: 5000 // 请求超时时间
 })
 
+const downloadUrl = url => {
+  const iframe = document.createElement('iframe')
+  iframe.style.display = 'none'
+  iframe.src = url + `?token=${getToken()}`
+  iframe.onload = function() {
+    document.body.removeChild(iframe)
+  }
+  document.body.appendChild(iframe)
+}
+
 // request拦截器
 service.interceptors.request.use(
   config => {
@@ -27,16 +37,23 @@ service.interceptors.request.use(
 // respone拦截器
 service.interceptors.response.use(
   response => {
+    if (response.headers && (response.headers['content-type'] === 'application/octet-stream;charset=UTF-8')) {
+      downloadUrl(response.request.responseURL)
+      return
+    }
+
     /**
      * code为非20000是抛错 可结合自己业务进行修改
      */
     const res = response.data
-    if (res.code !== '00000') {
-      Message({
-        message: res.msg,
-        type: 'error',
-        duration: 5 * 1000
-      })
+    if (res.code !== '0000') {
+      if (res.code !== '0009') {
+        Message({
+          message: res.msg,
+          type: 'error',
+          duration: 5 * 1000
+        })
+      }
 
       // 50008:非法的token; 50012:其他客户端登录了;  50014:Token 过期了;
       if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
@@ -54,7 +71,7 @@ service.interceptors.response.use(
           })
         })
       }
-      return Promise.reject('error')
+      return Promise.reject(res)
     } else {
       return response.data
     }

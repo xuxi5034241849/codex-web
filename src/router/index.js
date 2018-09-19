@@ -39,8 +39,7 @@ export const constantRouterMap = [
   {
     path: '/main',
     component: Layout,
-    redirect: '/main/index',
-    name: '主要功能',
+    name: '代码生成',
     meta: { title: '主要功能', icon: 'example' },
     children: [
       {
@@ -48,12 +47,6 @@ export const constantRouterMap = [
         name: 'CRUD',
         component: () => import('@/views/main/index'),
         meta: { title: 'CRUD', icon: 'table' }
-      },
-      {
-        path: 'framework',
-        name: '脚手架生成',
-        component: () => import('@/views/main/framework'),
-        meta: { title: '脚手架生成', icon: 'table' }
       }]
   },
   // {

@@ -14,3 +14,13 @@ export function getDataSourceList() {
     method: 'post'
   })
 }
+
+export function getTableList(id) {
+  return request({
+    url: '/datasource/get-table-list',
+    method: 'post',
+    data: {
+      id
+    }
+  })
+}
