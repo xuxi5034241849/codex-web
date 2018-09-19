@@ -62,6 +62,9 @@ startup_host_app () {
 
     deploy_ssh_host="$1"
 
+    # 创建目录
+    ssh $deploy_ssh_host "mkdir -p $deploy_dir"
+
     # 删除当前工程
     ssh $deploy_ssh_host "cd $deploy_dir && rm -rf *"
 
