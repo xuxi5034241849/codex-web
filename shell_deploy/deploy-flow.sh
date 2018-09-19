@@ -64,11 +64,11 @@ startup_host_app () {
 
     deploy_ssh_host="$1"
 
-    # 创建目录
-    ssh $deploy_ssh_host "mkdir -p $deploy_path"
-
     # 删除当前工程
     ssh $deploy_ssh_host "rm -rf $deploy_path"
+
+    # 创建目录
+    ssh $deploy_ssh_host "mkdir -p $deploy_path"
 
     echo "正在上传工程......"
 
